@@ -1,4 +1,4 @@
-# task
+# task [![Build Status](https://img.shields.io/travis/tristandunn/task/master.svg)](https://travis-ci.org/tristandunn/task)
 
 A *really* simple command line task tracking tool.
 
