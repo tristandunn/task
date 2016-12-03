@@ -13,7 +13,7 @@ teardown() {
 }
 
 @test "prints tasks from one day ago" {
-  date=$(date -j -v-1d +"%Y-%m-%d")
+  date=$(determineDate 1d)
   text="Text from yesterday."
 
   echo $text > "$TASK_DIRECTORY/$date.txt"
@@ -25,7 +25,7 @@ teardown() {
 }
 
 @test "prints tasks from one week ago" {
-  date=$(date -j -v-1w +"%Y-%m-%d")
+  date=$(determineDate 1w)
   text="Task from last week."
 
   echo $text > "$TASK_DIRECTORY/$date.txt"
@@ -37,7 +37,7 @@ teardown() {
 }
 
 @test "handles task file missing" {
-  date=$(date -j -v-1y +"%Y-%m-%d")
+  date="$(determineDate 1y)"
 
   run ./task 1y
 

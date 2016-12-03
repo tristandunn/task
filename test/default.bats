@@ -13,7 +13,7 @@ teardown() {
 }
 
 @test "prints tasks from today" {
-  date=$(date -j +"%Y-%m-%d")
+  date=$(determineDate)
   text="Task from today."
 
   echo $text > "$TASK_DIRECTORY/$date.txt"

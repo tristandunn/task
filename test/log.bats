@@ -13,7 +13,7 @@ teardown() {
 }
 
 @test "log a single task" {
-  date=$(date +%Y-%m-%d)
+  date=$(determineDate)
   task="Write a task tracker."
 
   run ./task $task
@@ -25,7 +25,7 @@ teardown() {
 }
 
 @test "log multiple tasks" {
-  date=$(date +%Y-%m-%d)
+  date=$(determineDate)
   task1="Write a task tracker."
   task2="Release the task tracker."
 
