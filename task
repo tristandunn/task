@@ -24,9 +24,15 @@ history() {
 
 log() {
   today=$(date +%Y-%m-%d)
+  file="$directory/$today.txt"
 
   mkdir -p $directory
-  echo $@ >> "$directory/$today.txt"
+
+  if type flock &> /dev/null; then
+    flock "$file" echo "$@" >> "$file"
+  else
+    echo $@ >> "$file"
+  fi
 }
 
 usage() {
