@@ -28,3 +28,24 @@ assert_log() {
 
   grep "$text" "$TASK_DIRECTORY/$date.txt"
 }
+
+determineDate() {
+  duration="$@"
+  duration="${duration:-0d}"
+
+  if [ "$(uname)" == "Linux" ]; then
+    duration=${duration/y/ years ago}
+    duration=${duration/m/ months ago}
+    duration=${duration/w/ weeks ago}
+    duration=${duration/d/ days ago}
+    duration=${duration/H/ hours ago}
+    duration=${duration/M/ minutes ago}
+    duration=${duration/S/ seconds ago}
+
+    date=$(date -d "$duration" +%Y-%m-%d)
+  else
+    date=$(date -j -v-$duration +%Y-%m-%d)
+  fi
+
+  echo $date
+}
