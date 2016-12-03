@@ -1,0 +1,72 @@
+#!/usr/bin/env bash
+
+directory=${TASK_DIRECTORY%/}
+directory="${directory:-$HOME/.tasks}"
+
+history() {
+  duration="$@"
+  duration="${duration:-0d}"
+  date=$(date -j -v-$duration +%Y-%m-%d)
+  path="$directory/$date.txt"
+
+  if [ -f $path ]; then
+    cat $path
+  else
+    today=$(date +%Y-%m-%d)
+
+    if [ $date == $today ]; then
+      echo "No tasks yet."
+    else
+      echo "No tasks on ${date}."
+    fi
+  fi
+}
+
+log() {
+  today=$(date +%Y-%m-%d)
+
+  mkdir -p $directory
+  echo $@ >> "$directory/$today.txt"
+}
+
+usage() {
+  cat <<EOF
+task is a command line task tracking tool.
+
+Usage:
+    task                  # Display tasks from today.
+    task <duration>       # Display tasks from previous days.
+    task <description>    # Log a task for today.
+    task --help           # Print this usage information.
+
+Your task directory is $directory. You can override this by
+setting \$TASK_DIRECTORY to your preferred path.
+EOF
+}
+
+main() {
+  result=0
+  method="history"
+
+  if [ ! -z "$1" ]; then
+    case "$1" in
+      [0-9]* )
+        method="history"
+        ;;
+      --help | -help | -h )
+        method="usage"
+        ;;
+      * )
+        method="log"
+        ;;
+    esac
+  fi
+
+  $method $@
+
+  result=$[$result + $?]
+
+  exit $result
+}
+
+main "$@"
