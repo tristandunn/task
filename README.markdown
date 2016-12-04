@@ -4,16 +4,19 @@ A *really* simple command line task tracking tool.
 
 ## Installation
 
-Download `task`, make it executable: `chmod +x task`, and place it in your `$PATH`.
+Download `task`, make it executable (`chmod +x task`), and place it in your
+`$PATH`.
 
 If you just want to copy and paste a command, this should work:
 
-    curl https://raw.githubusercontent.com/tristandunn/task/master/task > /usr/local/bin/task &&
+    TASK_URL=https://raw.githubusercontent.com/tristandunn/task/master/task &&
+      curl $TASK_URL > /usr/local/bin/task &&
       chmod +x /usr/local/bin/task
 
 ## Configuration
 
-By default your tasks live in `~/.tasks`. You can change to anywhere by setting the `$TASK_DIRECTORY` environment variable.
+By default your tasks live in `~/.tasks`. You can change to anywhere by setting
+the `$TASK_DIRECTORY` environment variable.
 
 ## Usage
 
