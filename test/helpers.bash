@@ -33,7 +33,9 @@ determineDate() {
   duration="$@"
   duration="${duration:-0d}"
 
-  if [ "$(uname)" == "Linux" ]; then
+  if [ "$(uname)" == "Darwin" ]; then
+    date=$(date -j -v-$duration +%Y-%m-%d)
+  else
     duration=${duration/y/ years ago}
     duration=${duration/m/ months ago}
     duration=${duration/w/ weeks ago}
@@ -43,8 +45,6 @@ determineDate() {
     duration=${duration/S/ seconds ago}
 
     date=$(date -d "$duration" +%Y-%m-%d)
-  else
-    date=$(date -j -v-$duration +%Y-%m-%d)
   fi
 
   echo $date
