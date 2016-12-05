@@ -9,9 +9,15 @@ Download `task`, make it executable (`chmod +x task`), and place it in your
 
 If you just want to copy and paste a command, this should work:
 
-    TASK_URL=https://raw.githubusercontent.com/tristandunn/task/master/task &&
-      curl $TASK_URL > /usr/local/bin/task &&
-      chmod +x /usr/local/bin/task
+```sh
+TASK_URL=https://raw.githubusercontent.com/tristandunn/task/master/task &&
+  curl $TASK_URL > /usr/local/bin/task &&
+  chmod +x /usr/local/bin/task
+```
+
+If you use [Homebrew][] you can install it with a single command:
+
+    brew install tristandunn/formula/task
 
 ## Configuration
 
@@ -29,7 +35,7 @@ Displays tasks from today, if any.
 Display tasks from a previous day based on the `duration`. The `duration` is
 based on the `date` option `-v` and may be `[0-9]+(y|m|w|d|H|M|S)`.
 
-```bash
+```sh
 # List tasks from yesterday.
 task 1d
 
@@ -54,3 +60,8 @@ Be sure to write and run the tests.
 ## License
 
 task uses the MIT license. See LICENSE for more details.
+
+
+
+
+[Homebrew]: http://brew.sh
