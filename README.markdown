@@ -4,10 +4,11 @@ A *really* simple command line task tracking tool.
 
 ## Installation
 
-Download `task`, make it executable (`chmod +x task`), and place it in your
-`$PATH`.
+### Homebrew
 
-If you just want to copy and paste a command, this should work:
+    brew install tristandunn/formula/task
+
+### cURL
 
 ```sh
 TASK_URL=https://raw.githubusercontent.com/tristandunn/task/master/task &&
@@ -15,14 +16,10 @@ TASK_URL=https://raw.githubusercontent.com/tristandunn/task/master/task &&
   chmod +x /usr/local/bin/task
 ```
 
-If you use [Homebrew][] you can install it with a single command:
+### Manual
 
-    brew install tristandunn/formula/task
-
-## Configuration
-
-By default your tasks live in `~/.tasks`. You can change to anywhere by setting
-the `$TASK_DIRECTORY` environment variable.
+Download [task][], make it executable (`chmod +x task`), and place it in your
+`$PATH`.
 
 ## Usage
 
@@ -64,4 +61,4 @@ task uses the MIT license. See LICENSE for more details.
 
 
 
-[Homebrew]: http://brew.sh
+[task]: https://raw.githubusercontent.com/tristandunn/task/master/task
